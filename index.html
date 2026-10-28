@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raushan Jewellers</title>
+  <meta name="description" content="Raushan Jewellers - Premium jewellery store">
+  <style>
+    :root {
+      --bg: #fdfcf8;
+      --text: #1a1a1a;
+      --gold: #b08d3b;
+      --gold-dark: #8b6b25;
+      --card: #fff;
+      --border: #e8e2d5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253,252,248,.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      color: var(--gold-dark);
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav { display: flex; gap: 22px; }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    nav a:hover { color: var(--gold-dark); }
+
+    .hero {
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 80px 20px;
+      background:
+        linear-gradient(rgba(20,18,13,.55), rgba(20,18,13,.55)),
+        url("https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1600&q=85")
+        center/cover;
+      color: white;
+    }
+
+    .hero-content { max-width: 800px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 8vw, 78px);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 17px;
+      opacity: .94;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 25px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--gold-dark); }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 22px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 38px;
+    }
+
+    .rates {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .rate-card, .product {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.04);
+    }
+
+    .rate-card h3 { color: #777; font-size: 14px; }
+    .rate {
+      font-size: 32px;
+      font-weight: 700;
+      margin-top: 8px;
+      color: var(--gold-dark);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 7px;
+      margin-bottom: 17px;
+    }
+
+    .product h3 {
+      font-family: Georgia, serif;
+      font-size: 21px;
+    }
+
+    .price {
+      margin-top: 7px;
+      color: var(--gold-dark);
+      font-weight: 700;
+    }
+
+    .info {
+      background: #f3efe5;
+      max-width: none;
+    }
+    .info-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 22px;
+      text-align: center;
+    }
+
+    footer {
+      background: #171612;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer .logo { margin-bottom: 10px; }
+    footer p { color: #bbb; font-size: 14px; }
+
+    .menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 18px 22px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+      }
+      nav.open { display: flex; }
+      .menu { display: block; }
+      .rates { grid-template-columns: 1fr; }
+      .products { grid-template-columns: 1fr; }
+      section { padding: 50px 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">RAUSHAN JEWELLERS</div>
+
+      <button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+
+      <nav id="nav">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#collections" onclick="closeMenu()">Collections</a>
+        <a href="#rates" onclick="closeMenu()">Live Rates</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Timeless Elegance • Trusted Craftsmanship</div>
+        <h1>Jewellery That Tells Your Story</h1>
+        <p>
+          Discover elegant gold, silver and diamond jewellery from
+          Raushan Jewellers.
+        </p>
+        <a class="btn" href="#collections">Explore Collection</a>
+      </div>
+    </section>
+
+    <section id="rates">
+      <h2 class="section-title">Live Rates</h2>
+      <p class="section-subtitle">Today's indicative precious-metal rates</p>
+
+      <div class="rates">
+        <div class="rate-card">
+          <h3>GOLD · 24K</h3>
+          <div class="rate" id="goldRate">₹7,500 / g</div>
+        </div>
+
+        <div class="rate-card">
+          <h3>SILVER</h3>
+          <div class="rate" id="silverRate">₹95 / g</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections">
+      <h2 class="section-title">Featured Collections</h2>
+      <p class="section-subtitle">A selection of elegant jewellery</p>
+
+      <div class="products">
+        <article class="product">
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80" alt="Gold ring">
+          <h3>Classic Gold Ring</h3>
+          <div class="price">₹24,999</div>
+        </article>
+
+        <article class="product">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80" alt="Gold necklace">
+          <h3>Elegant Necklace</h3>
+          <div class="price">₹69,999</div>
+        </article>
+
+        <article class="product">
+          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80" alt="Gold earrings">
+          <h3>Heritage Earrings</h3>
+          <div class="price">₹19,999</div>
+        </article>
+      </div>
+    </section>
+
+    <div class="info" id="about">
+      <div class="info-inner">
+        <h2 class="section-title">About Raushan Jewellers</h2>
+        <p>
+          We bring together timeless designs, careful craftsmanship and a
+          premium shopping experience for every customer.
+        </p>
+      </div>
+    </div>
+
+    <section id="contact">
+      <h2 class="section-title">Store Information</h2>
+      <p class="section-subtitle">
+        Contact Raushan Jewellers for product enquiries, orders and support.
+      </p>
+      <div style="text-align:center">
+        <a class="btn" href="tel:+919999999999">Contact Store</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="logo">RAUSHAN JEWELLERS</div>
+    <p>© <span id="year"></span> Raushan Jewellers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("open");
+    }
+
+    function closeMenu() {
+      document.getElementById("nav").classList.remove("open");
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Demo rate refresh. Replace this with your real rates API.
+    function updateRates() {
+      const gold = 7500 + Math.floor(Math.random() * 20 - 10);
+      const silver = 95 + Math.floor(Math.random() * 4 - 2);
+
+      document.getElementById("goldRate").textContent = "₹" + gold.toLocaleString("en-IN") + " / g";
+      document.getElementById("silverRate").textContent = "₹" + silver + " / g";
+    }
+
+    setInterval(updateRates, 5000);
+  </script>
+</body>
+</html>
